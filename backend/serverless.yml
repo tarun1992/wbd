@@ -1,0 +1,31 @@
+service: wbd-backend
+frameworkVersion: '3'
+provider:
+  name: aws
+  region: ${env:AWS_REGION}
+  runtime: nodejs18.x
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+    S3_EXPORT_BUCKET: ${env:S3_EXPORT_BUCKET}
+    NODE_ENV: production
+
+functions:
+  api:
+    handler: dist/handlers.apiHandler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY
+
+  exportDaily:
+    handler: dist/handlers.exportDailyHandler
+    events:
+      - schedule:
+          name: wbd-export-daily
+          rate: cron(0 10 * * ? *) # 10 UTC daily
+
+package:
+  individually: true
+  exclude:
+    - tests/**
+    - scripts/**
