@@ -1,37 +1,29 @@
-# # WBD Martech Engineering – User Journey Tracking Platform
+# WBD Martech Engineering – User Journey Tracking Platform
 
-**Author:** Tarun Narang
-**Repository:** [https://github.com/tarun1992/wbd](https://github.com/tarun1992/wbd)
+# 1. Project Overview & Problem Statement
 
----
+I implemnted a user journey tracking platform that captures user events. I have also used Mongo db cloud to store the collections and created REST API's to retrieve analytics and user journeys. It includes a React frontend for search and insights.
 
-## ## 1. Project Overview & Problem Statement
+Backend: Node.js + TypeScript + Express
 
-This project implements a simplified **User Journey Tracking Platform** that captures user events (page views, sessions, item interactions), stores them in a cloud database (MongoDB Atlas), and exposes APIs to retrieve analytics and user journeys.
+Database: MongoDB Cloud
 
-The primary goals of the system are:
+Frontend: React + Vite
 
-* Ingest user events at scale
-* Provide user-level journey insights
-* Provide aggregated analytics (e.g., top pages)
-* Expose APIs for frontend visualization
-* Build a simple frontend UI to demonstrate event search and analytics
+DevOps Level: Local setup + GitHub repo (no cloud deployment implemented)
 
----
 
-# ## 2. Levels Covered (Per Assessment Framework)
+# 2. Levels Covered 
 
 | Area             | Level Implemented | Notes                                                                      |
-| ---------------- | ----------------- | -------------------------------------------------------------------------- |
+| - | -- | -- |
 | **Database**     | **L3**            | Schema design → Implementation on MongoDB Atlas → Integration with backend |
 | **Backend/API**  | **L3**            | Event ingestion, journey API, analytics API, service-layer architecture    |
 | **Frontend**     | **L3**            | Search, journey view, analytics view                                       |
 | **Cloud/DevOps** | **L2**            | MongoDB Atlas + environment configs + GitHub repo                          |
 | **Monitoring**   | **L1**            | Basic logging & structure for future metrics                               |
 
-> **AWS deployment was not implemented**, and this is clearly stated. The README explains how it would be done in the future.
 
----
 
 # ## 3. Challenges Addressed & High-Level Approach
 
@@ -57,7 +49,7 @@ The primary goals of the system are:
 
 * Aggregation endpoints (top pages / event counts) using MongoDB aggregation pipeline
 
----
+
 
 # ## 4. High-Level Architecture Description
 
@@ -86,7 +78,7 @@ The system is divided into four logical components:
    * Placeholder for AWS Lambda/API Gateway, CloudWatch, S3, EventBridge
    * README explains how it *would* be done
 
----
+
 
 # ## 5. System Architecture Diagram (ASCII)
 
@@ -115,7 +107,7 @@ Future (Not Implemented):
 - CloudWatch metrics and dashboards
 ```
 
----
+
 
 # ## 6. Database Design
 
@@ -146,17 +138,17 @@ Future (Not Implemented):
 
 *(Used for demonstrating external system integration)*
 
----
+
 
 ## ### ERD (Text Representation)
 
 ```
-User (1) ---- (N) Events
-User (1) ---- (N) Sessions   [implicit via SESSION_START/END]
+User (1) - (N) Events
+User (1) - (N) Sessions   [implicit via SESSION_START/END]
 Articles separate, imported externally
 ```
 
----
+
 
 ## ### Indexing Strategy
 
@@ -174,7 +166,7 @@ These support:
 * Fast chronological sorting
 * Fast analytics filtering
 
----
+
 
 # ## 7. Backend / API Documentation
 
@@ -211,7 +203,7 @@ Ingest single or batch events.
 { "inserted": 1 }
 ```
 
----
+
 
 #### **2. GET /api/users/:userId/journey**
 
@@ -229,7 +221,7 @@ Returns ordered user events.
 }
 ```
 
----
+
 
 #### **3. GET /api/analytics/top-pages**
 
@@ -244,13 +236,13 @@ Aggregation example.
 ]
 ```
 
----
+
 
 ### **4. GET /api/health**
 
 Simple healthcheck endpoint.
 
----
+
 
 # ## 8. Frontend Design
 
@@ -270,7 +262,7 @@ Simple healthcheck endpoint.
 
    * Shows Top Pages
 
----
+
 
 ## ### User Stories
 
@@ -282,14 +274,6 @@ So I can see all events performed by that user.
 I want to see the pages most frequently visited
 So I can understand engagement.
 
----
-
-## ### Screenshots
-
-(Add screenshots here if needed — optional)
-
----
-
 # ## 9. Monitoring & Dashboards
 
 ### Implemented:
@@ -297,16 +281,14 @@ So I can understand engagement.
 * Console logging
 * Error boundaries in backend
 
-### Not Implemented (Future Work):
+### Not Implemented:
 
 * AWS CloudWatch metrics
 * Grafana dashboard
 * S3 export logs
 * Alerts / alarms
 
-This is clearly communicated to maintain honesty.
 
----
 
 # ## 10. Installation & Local Setup
 
@@ -316,7 +298,7 @@ This is clearly communicated to maintain honesty.
 * npm
 * MongoDB Atlas connection string
 
----
+
 
 ### ### Setup Steps
 
@@ -343,9 +325,9 @@ Open:
 http://localhost:5173
 ```
 
----
 
-# ## 11. Deployment Details (Honest Summary)
+
+# ## 11. Deployment Details 
 
 ### **Not Implemented**
 
@@ -354,9 +336,8 @@ http://localhost:5173
 * AWS EventBridge
 * AWS CloudWatch dashboards
 
-### **Why:**
 
-As a beginner in AWS, I focused on delivering complete local functionality with clear documentation and left cloud deployment as a future extension.
+As a beginner in AWS, I focused on delivering complete local functionality with clear documentation.
 
 ### **If deployed in future, the flow would be:**
 
@@ -366,7 +347,7 @@ Daily Export → Lambda → S3
 Monitoring → CloudWatch Metrics & Alarms
 ```
 
----
+
 
 # ## 12. CI/CD Notes
 
@@ -379,7 +360,7 @@ GitHub repository includes:
   * Testing
   * Deployment steps when cloud hosting is added
 
----
+
 
 # ## 13. Design Decisions & Patterns
 
@@ -401,7 +382,7 @@ GitHub repository includes:
    * Fast dev environment
    * Simple routing
 
----
+
 
 # ## 14. Repository Structure
 
@@ -425,26 +406,5 @@ wbd-martech-assessment/
 │   └── seed-events.js
 │
 └── README.md
-```
 
----
 
-# ## 15. Conclusion
-
-This project demonstrates a functional, modular, and scalable user journey tracking system built with MERN-style architecture and cloud-based database.
-
-AWS deployment & advanced monitoring remain **clear future enhancements**, but the system fulfills the logic, design, and UI requirements of the challenge.
-
----
-
-# ✅ **Your README is now ready to paste into GitHub.**
-
-If you want, I can also:
-
-### ✔ create a shorter README summary
-
-### ✔ generate a demo script for the interview
-
-### ✔ generate architecture PNG for upload
-
-Just tell me what you'd like next.
