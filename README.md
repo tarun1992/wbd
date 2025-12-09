@@ -1,4 +1,3 @@
-Perfect — I will generate a **complete, polished, honest README.md** that:
 # # WBD Martech Engineering – User Journey Tracking Platform
 
 **Author:** Tarun Narang
